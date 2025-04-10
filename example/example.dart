@@ -12,4 +12,6 @@ void main(List<String> args) {
   print(someNullableString.unwrapOr('Hello')); // Hello
 
   print(None() == someNullableString); // true
+
+  print(someInt.map((val) => '${val + 42}') == const Some('84'));
 }

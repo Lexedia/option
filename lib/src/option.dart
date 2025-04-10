@@ -123,6 +123,15 @@ sealed class Option<T extends Object?> {
     None() => f(),
   };
 
+  /// Transform this [Option] to [map] it's value if it is [Some], or return [None] otherwise.
+  /// You can think of [map] as a more practical optional chaining (`?.`) operator.
+  /// 
+  /// Note that the returned [Option] will be then bound to [E] and not [T].
+  Option<E> map<E>(E Function(T) mapper) => switch (this) {
+    Some(:final value) => Some<E>(mapper(value)),
+    None() => None<E>(),
+  };
+
   /// If this [Option] has [Some] value, returns it, `null` otherwise.
   T? toNullable() => switch (this) {
     Some(:final value) => value,
