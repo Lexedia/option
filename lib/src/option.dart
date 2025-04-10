@@ -132,6 +132,13 @@ sealed class Option<T extends Object?> {
     None() => None<E>(),
   };
 
+  /// The [|] operator is used to either select [this] or [other] if [this] is [None].
+  /// You can think of [|] as an equivalent to `??` for nullable types.
+  Option<T> operator |(Option<T> other) => switch (this) {
+    Some() => this,
+    None() => other,
+  };
+
   /// If this [Option] has [Some] value, returns it, `null` otherwise.
   T? toNullable() => switch (this) {
     Some(:final value) => value,
