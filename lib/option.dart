@@ -16,4 +16,4 @@
 /// ```
 library;
 
-export 'src/option.dart';
+export 'src/option.dart' show ExpectError, None, Option, Some, UnwrapError;
