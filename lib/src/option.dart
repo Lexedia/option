@@ -47,12 +47,12 @@ sealed class Option<T extends Object?> {
   /// Creates [Some] value from [value].
   ///
   /// This is the same as invoking the [Some] constructor.
-  const factory Option.some(T value) = Some;
+  const factory Option.some(T value) = Some<T>;
 
   /// Creates [None] value.
   ///
   /// This is the same as invoking the [None] constructor.
-  const factory Option.none() = None;
+  const factory Option.none() = None<T>;
 
   /// Creates [Some] value if [value] isn't `null`, [None] either.
   factory Option.fromNullable(T? value) => switch (value) {
@@ -182,5 +182,5 @@ final class None<T extends Object?> extends Option<T> {
   bool operator ==(Object other) => identical(this, other) || other is None;
 
   @override
-  int get hashCode => 0;
+  int get hashCode => 0xB16B00B5;
 }
